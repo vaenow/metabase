@@ -10,7 +10,7 @@
             [metabase.query-processor-test :as qpt]
             [metabase.test.data.datasets :refer [*engine*]]))
 
-(qpt/expect-with-non-timeseries-dbs-except #{:oracle :mongo :redshift}
+(qpt/expect-with-non-timeseries-dbs-except #{:oracle :mongo :redshift :presto}
   (if (= :sqlite *engine*)
     [[1 "Plato Yeshua" "2014-04-01 00:00:00" "08:30:00"]
      [2 "Felipinho Asklepios" "2014-12-05 00:00:00" "15:15:00"]
@@ -29,7 +29,7 @@
            (ql/limit 5)))
        qpt/rows))
 
-(qpt/expect-with-non-timeseries-dbs-except #{:oracle :mongo :redshift}
+(qpt/expect-with-non-timeseries-dbs-except #{:oracle :mongo :redshift :presto}
   (cond
     (= :sqlite *engine*)
     [[1 "Plato Yeshua" "2014-04-01 00:00:00" "08:30:00"]
